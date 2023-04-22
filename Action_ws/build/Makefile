@@ -363,6 +363,19 @@ action_exp_geneus/fast:
 .PHONY : action_exp_geneus/fast
 
 #=============================================================================
+# Target rules for targets named ActionClient
+
+# Build rule for target.
+ActionClient: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 ActionClient
+.PHONY : ActionClient
+
+# fast build rule for target.
+ActionClient/fast:
+	$(MAKE) -f action_exp/CMakeFiles/ActionClient.dir/build.make action_exp/CMakeFiles/ActionClient.dir/build
+.PHONY : ActionClient/fast
+
+#=============================================================================
 # Target rules for targets named action_exp_generate_messages_eus
 
 # Build rule for target.
@@ -387,6 +400,19 @@ action_exp_gencpp: cmake_check_build_system
 action_exp_gencpp/fast:
 	$(MAKE) -f action_exp/CMakeFiles/action_exp_gencpp.dir/build.make action_exp/CMakeFiles/action_exp_gencpp.dir/build
 .PHONY : action_exp_gencpp/fast
+
+#=============================================================================
+# Target rules for targets named ActionServer
+
+# Build rule for target.
+ActionServer: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 ActionServer
+.PHONY : ActionServer
+
+# fast build rule for target.
+ActionServer/fast:
+	$(MAKE) -f action_exp/CMakeFiles/ActionServer.dir/build.make action_exp/CMakeFiles/ActionServer.dir/build
+.PHONY : ActionServer/fast
 
 #=============================================================================
 # Target rules for targets named action_exp_generate_messages_cpp
@@ -884,8 +910,10 @@ help:
 	@echo "... action_exp_genlisp"
 	@echo "... action_exp_generate_messages_lisp"
 	@echo "... action_exp_geneus"
+	@echo "... ActionClient"
 	@echo "... action_exp_generate_messages_eus"
 	@echo "... action_exp_gencpp"
+	@echo "... ActionServer"
 	@echo "... action_exp_generate_messages_cpp"
 	@echo "... _action_exp_generate_messages_check_deps_AddResult"
 	@echo "... _action_exp_generate_messages_check_deps_AddActionResult"

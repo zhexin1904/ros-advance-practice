@@ -9,16 +9,19 @@ class ClientNode : public NodeBase
 {
 
 public:
-    ClientNode(int Argc, char** Argv, const char* NodeName, int num): NodeBase(Argc, Argv, NodeName), Client(*mpNodeHandle, "AddNumber", false)
+    ClientNode(int Argc, char** Argv, const char* NodeName, int num, ros::NodeHandle nh_): NodeBase(Argc, Argv, NodeName),nodehandle_(nh_)
     {
         goal.target = num;
-        
+        Client = new AddClient(nodehandle_, "AddNumber", false);
     }
 
-    ~ClientNode();
+    ~ClientNode()
+    {
+        delete Client;
+    }
     
 
-    void Done_cb(const actionlib::SimpleClientGoalState &state, const action_exp::AddActionResult* result)
+    void Done_cb(const actionlib::SimpleClientGoalState &state, const action_exp::AddActionResultConstPtr& result)
     {
         if (state.state_ == state.SUCCEEDED)
             ROS_INFO("Action service successed, the result is : " , result->result);
@@ -43,8 +46,8 @@ public:
 
     void Run()
     {
-        Client.waitForServer();
-        Client.sendGoal(goal, &Done_cb, &Active_cb, &FeedBack_cb);
+        Client->waitForServer();
+        Client->sendGoal(goal, boost::bind(&ClientNode::Done_cb, this, _1, _2), boost::bind(&ClientNode::Active_cb, this), boost::bind(&ClientNode::FeedBack_cb, this, _1));
         
         ros::spin();
     }
@@ -52,9 +55,9 @@ public:
 
 private:
 
-        AddClient Client;
+        AddClient* Client;
         action_exp::AddGoal goal;
-
+        ros::NodeHandle nodehandle_;
 };
 
 int main(int argc, char** argv)
@@ -64,9 +67,9 @@ int main(int argc, char** argv)
     else
         int num  =atoi(argv[1]);
     
-    
+    ros::NodeHandle nh2;
     int num = atoi(argv[1]);
-    ClientNode node(argc, argv, "ActionClient", num);
+    ClientNode node(argc, argv, "ActionClient", num, nh2);
    
     node.Run();
     

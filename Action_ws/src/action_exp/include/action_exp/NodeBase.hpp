@@ -10,20 +10,18 @@ public:
     NodeBase(int Argc, char** Argv, const char* NodeName)
     {
         ros::init(Argc, Argv, NodeName);
-        mpNodeHandle.reset(new ros::NodeHandle());
-
-
-        
+        // mpNodeHandle.reset(new ros::NodeHandle());
     }
 
 
     ~NodeBase();
 
-    virtual void Run() = 0;
+    virtual void Run(void) = 0;
 
-protected:
-    
-    std::unique_ptr<ros::NodeHandle> mpNodeHandle;
+// protected:
+
+
+    // std::unique_ptr<ros::NodeHandle> mpNodeHandle;
 
 };
 

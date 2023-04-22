@@ -1,5 +1,5 @@
 #include "NodeBase.hpp"
-#include "AddAction.h"
+#include "action_exp/AddAction.h"
 #include <actionlib/server/simple_action_server.h>
 
 typedef actionlib::SimpleActionServer<action_exp::AddAction> AddServer;
@@ -7,13 +7,19 @@ typedef actionlib::SimpleActionServer<action_exp::AddAction> AddServer;
 class ServerNode : public NodeBase
 {
 public:
-        ServerNode(int Argc, char** Argv, const char* NodeName)
-            : NodeBase(Argc, Argv, NodeName), Server(*mpNodeHandle, "AddNumber", boost::bind(&CallBack, _1, _2, this), false)
+        ServerNode(int Argc, char** Argv, const char* NodeName, ros::NodeHandle nh_)
+            : NodeBase(Argc, Argv, NodeName), nodehandle_(nh_), Server(NULL)
         {
             // Server(*mpNodeHandle, "AddNumber", boost::bind(&CallBack, _1, _2, this), false);
+            
+            Server = new AddServer(nodehandle_, "AddNumber", boost::bind(&ServerNode::CallBack, this, _1, _2), false);
+            
         }
 
-        ~ServerNode();
+        ~ServerNode()
+        {
+            delete Server;
+        }
 
         void CallBack(const action_exp::AddGoalConstPtr &goal, AddServer* server)
         {
@@ -38,23 +44,26 @@ public:
 
         void Run()
         {
-            Server.start();
+            Server->start();
             
 
             ros::spin();
         }
 
+
 private:
 
-        AddServer Server;
+        AddServer* Server;
         action_exp::AddFeedback FeedBack;
+        ros::NodeHandle nodehandle_;
 
 
 };
 
 int main(int argc, char** argv)
 {
-    ServerNode node(argc, argv, "ActionServer");
+    ros::NodeHandle nh1;
+    ServerNode node(argc, argv, "ActionServer", nh1);
 
     node.Run();
     

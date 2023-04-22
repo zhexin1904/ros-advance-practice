@@ -258,6 +258,21 @@ action_exp_geneus/fast:
 .PHONY : action_exp_geneus/fast
 
 # Convenience name for target.
+action_exp/CMakeFiles/ActionClient.dir/rule:
+	cd /home/jason/ROSlearning/ros-advance-practice/Action_ws/build && $(MAKE) -f CMakeFiles/Makefile2 action_exp/CMakeFiles/ActionClient.dir/rule
+.PHONY : action_exp/CMakeFiles/ActionClient.dir/rule
+
+# Convenience name for target.
+ActionClient: action_exp/CMakeFiles/ActionClient.dir/rule
+
+.PHONY : ActionClient
+
+# fast build rule for target.
+ActionClient/fast:
+	cd /home/jason/ROSlearning/ros-advance-practice/Action_ws/build && $(MAKE) -f action_exp/CMakeFiles/ActionClient.dir/build.make action_exp/CMakeFiles/ActionClient.dir/build
+.PHONY : ActionClient/fast
+
+# Convenience name for target.
 action_exp/CMakeFiles/action_exp_generate_messages_eus.dir/rule:
 	cd /home/jason/ROSlearning/ros-advance-practice/Action_ws/build && $(MAKE) -f CMakeFiles/Makefile2 action_exp/CMakeFiles/action_exp_generate_messages_eus.dir/rule
 .PHONY : action_exp/CMakeFiles/action_exp_generate_messages_eus.dir/rule
@@ -286,6 +301,21 @@ action_exp_gencpp: action_exp/CMakeFiles/action_exp_gencpp.dir/rule
 action_exp_gencpp/fast:
 	cd /home/jason/ROSlearning/ros-advance-practice/Action_ws/build && $(MAKE) -f action_exp/CMakeFiles/action_exp_gencpp.dir/build.make action_exp/CMakeFiles/action_exp_gencpp.dir/build
 .PHONY : action_exp_gencpp/fast
+
+# Convenience name for target.
+action_exp/CMakeFiles/ActionServer.dir/rule:
+	cd /home/jason/ROSlearning/ros-advance-practice/Action_ws/build && $(MAKE) -f CMakeFiles/Makefile2 action_exp/CMakeFiles/ActionServer.dir/rule
+.PHONY : action_exp/CMakeFiles/ActionServer.dir/rule
+
+# Convenience name for target.
+ActionServer: action_exp/CMakeFiles/ActionServer.dir/rule
+
+.PHONY : ActionServer
+
+# fast build rule for target.
+ActionServer/fast:
+	cd /home/jason/ROSlearning/ros-advance-practice/Action_ws/build && $(MAKE) -f action_exp/CMakeFiles/ActionServer.dir/build.make action_exp/CMakeFiles/ActionServer.dir/build
+.PHONY : ActionServer/fast
 
 # Convenience name for target.
 action_exp/CMakeFiles/action_exp_generate_messages_cpp.dir/rule:
@@ -827,6 +857,60 @@ _action_exp_generate_messages_check_deps_AddActionGoal/fast:
 	cd /home/jason/ROSlearning/ros-advance-practice/Action_ws/build && $(MAKE) -f action_exp/CMakeFiles/_action_exp_generate_messages_check_deps_AddActionGoal.dir/build.make action_exp/CMakeFiles/_action_exp_generate_messages_check_deps_AddActionGoal.dir/build
 .PHONY : _action_exp_generate_messages_check_deps_AddActionGoal/fast
 
+src/ClientNode.o: src/ClientNode.cpp.o
+
+.PHONY : src/ClientNode.o
+
+# target to build an object file
+src/ClientNode.cpp.o:
+	cd /home/jason/ROSlearning/ros-advance-practice/Action_ws/build && $(MAKE) -f action_exp/CMakeFiles/ActionClient.dir/build.make action_exp/CMakeFiles/ActionClient.dir/src/ClientNode.cpp.o
+.PHONY : src/ClientNode.cpp.o
+
+src/ClientNode.i: src/ClientNode.cpp.i
+
+.PHONY : src/ClientNode.i
+
+# target to preprocess a source file
+src/ClientNode.cpp.i:
+	cd /home/jason/ROSlearning/ros-advance-practice/Action_ws/build && $(MAKE) -f action_exp/CMakeFiles/ActionClient.dir/build.make action_exp/CMakeFiles/ActionClient.dir/src/ClientNode.cpp.i
+.PHONY : src/ClientNode.cpp.i
+
+src/ClientNode.s: src/ClientNode.cpp.s
+
+.PHONY : src/ClientNode.s
+
+# target to generate assembly for a file
+src/ClientNode.cpp.s:
+	cd /home/jason/ROSlearning/ros-advance-practice/Action_ws/build && $(MAKE) -f action_exp/CMakeFiles/ActionClient.dir/build.make action_exp/CMakeFiles/ActionClient.dir/src/ClientNode.cpp.s
+.PHONY : src/ClientNode.cpp.s
+
+src/ServerNode.o: src/ServerNode.cpp.o
+
+.PHONY : src/ServerNode.o
+
+# target to build an object file
+src/ServerNode.cpp.o:
+	cd /home/jason/ROSlearning/ros-advance-practice/Action_ws/build && $(MAKE) -f action_exp/CMakeFiles/ActionServer.dir/build.make action_exp/CMakeFiles/ActionServer.dir/src/ServerNode.cpp.o
+.PHONY : src/ServerNode.cpp.o
+
+src/ServerNode.i: src/ServerNode.cpp.i
+
+.PHONY : src/ServerNode.i
+
+# target to preprocess a source file
+src/ServerNode.cpp.i:
+	cd /home/jason/ROSlearning/ros-advance-practice/Action_ws/build && $(MAKE) -f action_exp/CMakeFiles/ActionServer.dir/build.make action_exp/CMakeFiles/ActionServer.dir/src/ServerNode.cpp.i
+.PHONY : src/ServerNode.cpp.i
+
+src/ServerNode.s: src/ServerNode.cpp.s
+
+.PHONY : src/ServerNode.s
+
+# target to generate assembly for a file
+src/ServerNode.cpp.s:
+	cd /home/jason/ROSlearning/ros-advance-practice/Action_ws/build && $(MAKE) -f action_exp/CMakeFiles/ActionServer.dir/build.make action_exp/CMakeFiles/ActionServer.dir/src/ServerNode.cpp.s
+.PHONY : src/ServerNode.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -843,8 +927,10 @@ help:
 	@echo "... action_exp_genlisp"
 	@echo "... action_exp_generate_messages_lisp"
 	@echo "... action_exp_geneus"
+	@echo "... ActionClient"
 	@echo "... action_exp_generate_messages_eus"
 	@echo "... action_exp_gencpp"
+	@echo "... ActionServer"
 	@echo "... action_exp_generate_messages_cpp"
 	@echo "... _action_exp_generate_messages_check_deps_AddResult"
 	@echo "... _action_exp_generate_messages_check_deps_AddActionResult"
@@ -884,6 +970,12 @@ help:
 	@echo "... actionlib_generate_messages_cpp"
 	@echo "... rosgraph_msgs_generate_messages_nodejs"
 	@echo "... _action_exp_generate_messages_check_deps_AddActionGoal"
+	@echo "... src/ClientNode.o"
+	@echo "... src/ClientNode.i"
+	@echo "... src/ClientNode.s"
+	@echo "... src/ServerNode.o"
+	@echo "... src/ServerNode.i"
+	@echo "... src/ServerNode.s"
 .PHONY : help
 
 
