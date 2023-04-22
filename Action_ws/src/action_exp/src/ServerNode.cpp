@@ -18,7 +18,7 @@ public:
         void CallBack(const action_exp::AddGoalConstPtr &goal, AddServer* server)
         {
             size_t num = goal->target;
-            action_exp::AddFeedback FeedBack;
+            // action_exp::AddFeedback FeedBack;
 
             ros::Rate r(10);
             for (size_t i = 0; i < num; i++)
@@ -47,12 +47,14 @@ public:
 private:
 
         AddServer Server;
+        action_exp::AddFeedback FeedBack;
+
 
 };
 
 int main(int argc, char** argv)
 {
-    ServerNode node(argc, argv, "AerverNode");
+    ServerNode node(argc, argv, "ActionServer");
 
     node.Run();
     
