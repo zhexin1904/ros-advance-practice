@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/jason/ROSlearning/ros-advance-practice/Action_ws/devel/setup.sh
