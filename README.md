@@ -1,2 +1,2 @@
 # ros-advance-practice
-Simple example : Action、DynamicReconfigure、pluginlib、nodelet
+Simple example of Action、DynamicReconfigure、pluginlib、nodelet
