@@ -1,0 +1,2 @@
+
+-DCATKIN_DEVEL_PREFIX=/home/jason/ROSlearning/ros-advance-practice/Pluginlib/devel -DCMAKE_INSTALL_PREFIX=/home/jason/ROSlearning/ros-advance-practice/Pluginlib/install -G Unix Makefiles
