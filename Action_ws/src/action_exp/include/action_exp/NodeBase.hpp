@@ -10,7 +10,7 @@ public:
     NodeBase(int Argc, char** Argv, const char* NodeName)
     {
         ros::init(Argc, Argv, NodeName);
-        // mpNodeHandle.reset(new ros::NodeHandle());
+        mpNodeHandle.reset(new ros::NodeHandle());
     }
 
 
@@ -21,7 +21,7 @@ public:
 // protected:
 
 
-    // std::unique_ptr<ros::NodeHandle> mpNodeHandle;
+    std::unique_ptr<ros::NodeHandle> mpNodeHandle;
 
 };
 

@@ -9,16 +9,17 @@ class ClientNode : public NodeBase
 {
 
 public:
-    ClientNode(int Argc, char** Argv, const char* NodeName, int num, ros::NodeHandle nh_): NodeBase(Argc, Argv, NodeName),nodehandle_(nh_)
+    ClientNode(int Argc, char** Argv, const char* NodeName, int num): NodeBase(Argc, Argv, NodeName)
     {
         goal.target = num;
-        Client = new AddClient(nodehandle_, "AddNumber", false);
+        Client.reset(new AddClient(*mpNodeHandle, "AddNumber", false));
     }
 
     ~ClientNode()
     {
-        delete Client;
+
     }
+    
     
 
     void Done_cb(const actionlib::SimpleClientGoalState &state, const action_exp::AddActionResultConstPtr& result)
@@ -54,25 +55,26 @@ public:
 
 
 private:
+        std::unique_ptr<AddClient> Client;
 
-        AddClient* Client;
+        // AddClient* Client;
         action_exp::AddGoal goal;
-        ros::NodeHandle nodehandle_;
 };
 
 int main(int argc, char** argv)
 {
     if (argc != 2)
+    {  
         ROS_ERROR("usage : rosrun ActionClient num");
-    else
-        int num  =atoi(argv[1]);
-    
-    ros::NodeHandle nh2;
-    int num = atoi(argv[1]);
-    ClientNode node(argc, argv, "ActionClient", num, nh2);
+        return 1;
+    }
+
+    int num  =atoi(argv[1]);
+
+    ClientNode node(argc, argv, "ActionClient", num);
    
     node.Run();
     
-    
+
     return 0;
 }
