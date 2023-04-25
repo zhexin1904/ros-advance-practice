@@ -1,8 +1,0 @@
-prefix=/home/jason/ROSlearning/ros-advance-practice/Pluginlib/devel
-
-Name: PluginTest
-Description: Description of PluginTest
-Version: 0.0.0
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: 
