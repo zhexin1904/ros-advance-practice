@@ -1,0 +1,9 @@
+<library path="lib/libPluginTest">
+    <class type="PluginDerive::Circle" base_class_type="PluginBase::BasePolygon">
+        <description>plugin of Circle, inherits from PluginBase::BasePolygon</description>
+    </class>
+
+    <class type="PluginDerive::Square" base_class_type="PluginBase::BasePolygon">
+        <description>plugin of Square, inherits from PluginBase::BasePolygon</description>
+    </class>
+</library>

@@ -10,12 +10,18 @@ class BasePolygon
 public:
 
     virtual void GetParam(double param) = 0;
-    virtual double GetArea(double param) = 0;
+    virtual double GetArea() = 0;
 
-    ~BasePolygon();
+    virtual ~BasePolygon()
+    {
+
+    }
     
 protected:
-    BasePolygon();
+    BasePolygon()
+    {
+        
+    }
     
 };
 

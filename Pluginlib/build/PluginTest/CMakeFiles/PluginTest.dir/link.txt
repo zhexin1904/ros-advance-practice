@@ -1,0 +1,1 @@
+/usr/bin/c++ -fPIC   -shared -Wl,-soname,libPluginTest.so -o /home/jason/ROSlearning/ros-advance-practice/Pluginlib/devel/lib/libPluginTest.so CMakeFiles/PluginTest.dir/src/PluginTestLib.cpp.o 
